@@ -28,6 +28,11 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+        <style>
+            .reveal div {
+                margin-top: 10px;
+            }
+        </style>
 	</head>
 
 	<body>
@@ -39,6 +44,8 @@
                     <h1>Large-scale</h1>
                     <h1>Backbone apps</h1>
                     <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/bgo/images/122147/backbone-dc8ced2e.png" style="width: 317px; height: 317px; max-height: none; max-width: none; border: none; background: none; box-shadow: none;">
+                    <br/>
+                    <small>Bo Gotthardt<br/>mail@gotthardt.bo</small>
                 </section>
 
                 <section>
@@ -98,7 +105,7 @@ documents.fetch();</code></pre>
 var view = new DocumentView({
     model: document
 });
-// Somehow attach view to the right place in the DOM.</code></pre>
+// Somehow render and attach to the right place in the DOM.</code></pre>
                     </section>
                 </section>
 
@@ -121,7 +128,7 @@ var view = new DocumentView({
                 <section>
                     <h2>How to get there?</h2>
                     <div>Backbone plugin ecosystem</div>
-                    <div>Assemble a "stack" that does all of this</div>
+                    <div>Assemble a set of plugins that does all of this</div>
                 </section>
 
                 <section>
@@ -134,7 +141,7 @@ var view = new DocumentView({
                     </section>
 
                     <section>
-                        <h2>Example</h2>
+                        <h2>Views and regions</h2>
                         <div>
     <pre><code class="javascript">var DocumentView = Marionette.Layout.extend({
     template: Handlebars.compile(template),
@@ -157,13 +164,12 @@ region.show(new DocumentView({
                 <section>
                     <section>
                         <h2>Stickit</h2>
-                        <div>Simple two-way binding</div>
-                        <br>
+                        <div>Strightforward two-way binding</div>
                         <div>Binding setup in code enables clever tricks</div>
                     </section>
 
                     <section>
-                        <h2>Example</h2>
+                        <h2>Bindings setup</h2>
                         <pre><code class="javascript">var DocumentView = Marionette.Layout.extend({
     bindings: {
         ".title": "title",
@@ -189,7 +195,7 @@ region.show(new DocumentView({
                     </section>
 
                     <section>
-                        <h2>Example</h2>
+                        <h2>Relations</h2>
                         <pre><code class="javascript">var DocumentModel = Associations.AssociatedModel.extend({
     relations: [{
         type: Associations.One,
@@ -200,7 +206,10 @@ region.show(new DocumentView({
         key: "comments",
         collectionType: CommentCollection
     }]
-});</code></pre>
+});
+
+document.get("author").set("name", "John Smith");
+document.set("author.name", "John Smith");</code></pre>
                     </section>
                 </section>
 
@@ -214,15 +223,24 @@ region.show(new DocumentView({
                 </section>
 
                 <section>
-                    <h2>Advantages</h2>
-                    <div>
-                        <ul>
-                            <li>More object-oriented</li>
-                            <li>Easier to get started with</li>
-                            <li>Easier to customize than monolithic frameworks</li>
-                            <li>Easier to debug than dirty-checking loops</li>
-                        </ul>
-                    </div>
+                    <section>
+                        <h2>Advantages</h2>
+                        <div>
+                            <ul>
+                                <li>More object-oriented</li>
+                                <li>Easier to get started with</li>
+                                <li>Easier to customize than monolithic frameworks</li>
+                                <li>Easier to debug than dirty-checking loops</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Customization ideas</h2>
+                        <div>Region that slides in the new view on top of the old</div>
+                        <div>Region shows a Promise for a view</div>
+                        <div>Form validation visualized via bindings elements</div>
+                    </section>
                 </section>
 
                 <section>

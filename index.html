@@ -159,6 +159,19 @@ region.show(new DocumentView({
 }));</code></pre>
                         </div>
                     </section>
+
+	                <section>
+		                <h2>CollectionView</h2>
+		                <div>
+    <pre><code class="javascript">var TableView = Marionette.CollectionView.extend({
+    itemView: DocumentThumbnailView
+});
+
+var view = new TableView({
+    collection: documents
+});</code></pre>
+		                </div>
+	                </section>
                 </section>
 
                 <section>

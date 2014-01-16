@@ -46,3 +46,12 @@ var DocumentModel = Associations.AssociatedModel.extend({
         collectionType: CommentCollection
     }]
 });
+
+
+var TableView = Marionette.CollectionView.extend({
+	itemView: DocumentThumbnailView
+});
+
+var view = new TableView({
+	collection: documents
+});
